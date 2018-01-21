@@ -131,12 +131,13 @@ int main(void)
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityHigh, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityIdle, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
 	vUARTCommandConsoleStart();
+	M2_Modem_Init();
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -424,23 +425,23 @@ void StartDefaultTask(void const * argument)
 {
 
   /* USER CODE BEGIN 5 */
-	uint16_t dev_addr = 0x2000;
-	M2_Modem_SendBuf(M2_DEVICE_IF_0_SET_ADDR, &dev_addr, 1);
-	
-  dev_addr = 0x7860;
-	M2_Modem_SendBuf(M2_DEVICE_IF_1_SET_ADDR, &dev_addr, 1);
-	
-	realCRC16=crc16_CCITT((uint8_t*)snd_data, TEST_SEND_DATA_LEN*2);
+//	uint16_t dev_addr = 0x2000;
+//	M2_Modem_SendBuf(M2_DEVICE_IF_0_SET_ADDR, &dev_addr, 1);
+//	
+//  dev_addr = 0x7860;
+//	M2_Modem_SendBuf(M2_DEVICE_IF_1_SET_ADDR, &dev_addr, 1);
+//	
+//	realCRC16=crc16_CCITT((uint8_t*)snd_data, TEST_SEND_DATA_LEN*2);
 	
   /* Infinite loop */
   for(;;)
   {
-			M2_Modem_SendBuf(M2_DEVICE_IF_0_TX, snd_data, TEST_SEND_DATA_LEN);
-			M2_Modem_ReceiveBuf(M2_DEVICE_CRC_REG, (uint8_t*)&hardwareCRC16, 2, 0);
-		
-			osDelay(100);
-			M2_Modem_ReceiveBuf(M2_DEVICE_IF_1_RX, rcv_data, TEST_RECV_DATA_LEN, 0);
-			osDelay(100);		
+//			M2_Modem_SendBuf(M2_DEVICE_IF_0_TX, snd_data, TEST_SEND_DATA_LEN);
+//			M2_Modem_ReceiveBuf(M2_DEVICE_CRC_REG, (uint8_t*)&hardwareCRC16, 2, 0);
+//		
+//			osDelay(100);
+//			M2_Modem_ReceiveBuf(M2_DEVICE_IF_1_RX, rcv_data, TEST_RECV_DATA_LEN, 0);
+//			osDelay(100);		
   }
   /* USER CODE END 5 */ 
 }

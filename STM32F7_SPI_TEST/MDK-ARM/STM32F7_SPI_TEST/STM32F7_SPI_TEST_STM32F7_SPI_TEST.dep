@@ -588,7 +588,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1/portmac
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x59EB02E2)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x59EB02E2)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x59EB02E2)
-F (../Src/main.c)(0x5A5FB049)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\main.o --omf_browse stm32f7_spi_test\main.crf --depend stm32f7_spi_test\main.d)
+F (../Src/main.c)(0x5A64EBB9)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\main.o --omf_browse stm32f7_spi_test\main.crf --depend stm32f7_spi_test\main.d)
 I (../Inc/main.h)(0x5A5F9F55)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h)(0x59EB02E1)
 I (../Inc/stm32f7xx_hal_conf.h)(0x5A5F9F55)
@@ -635,7 +635,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x59EB02E2)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x59EB02E2)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x59EB02E2)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x59EB02E2)
-I (../Inc/m2_modem.h)(0x5A5097F9)
+I (../Inc/m2_modem.h)(0x5A64E188)
 I (..\CLI\UART-interrupt-driven-command-console.h)(0x5A60EB1A)
 F (../Src/stm32f7xx_hal_msp.c)(0x5A5F9F55)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\stm32f7xx_hal_msp.o --omf_browse stm32f7_spi_test\stm32f7xx_hal_msp.crf --depend stm32f7_spi_test\stm32f7xx_hal_msp.d)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h)(0x59EB02E1)
@@ -669,7 +669,7 @@ I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr_ex.h)(0x59EB02E1)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi.h)(0x59EB02E1)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h)(0x59EB02E1)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h)(0x59EB02E1)
-F (../Src/stm32f7xx_it.c)(0x5A60F1EA)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\stm32f7xx_it.o --omf_browse stm32f7_spi_test\stm32f7xx_it.crf --depend stm32f7_spi_test\stm32f7xx_it.d)
+F (../Src/stm32f7xx_it.c)(0x5A64B64E)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\stm32f7xx_it.o --omf_browse stm32f7_spi_test\stm32f7xx_it.crf --depend stm32f7_spi_test\stm32f7xx_it.d)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h)(0x59EB02E1)
 I (../Inc/stm32f7xx_hal_conf.h)(0x5A5F9F55)
 I (../Inc/main.h)(0x5A5F9F55)
@@ -718,8 +718,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x59EB02E2)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x59EB02E2)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x59EB02E2)
 I (..\CLI\UART-interrupt-driven-command-console.h)(0x5A60EB1A)
-F (..\Src\m2_modem.c)(0x5A5097EA)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\m2_modem.o --omf_browse stm32f7_spi_test\m2_modem.crf --depend stm32f7_spi_test\m2_modem.d)
-I (../Inc/m2_modem.h)(0x5A5097F9)
+F (..\Src\m2_modem.c)(0x5A64ED52)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\m2_modem.o --omf_browse stm32f7_spi_test\m2_modem.crf --depend stm32f7_spi_test\m2_modem.d)
+I (../Inc/m2_modem.h)(0x5A64E188)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h)(0x59EB02E1)
 I (../Inc/stm32f7xx_hal_conf.h)(0x5A5F9F55)
 I (../Inc/main.h)(0x5A5F9F55)
@@ -751,7 +751,22 @@ I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_pwr_ex.h)(0x59EB02E1)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_spi.h)(0x59EB02E1)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart.h)(0x59EB02E1)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h)(0x59EB02E1)
-F (..\CLI\CLI-commands.c)(0x5A6107BD)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\cli-commands.o --omf_browse stm32f7_spi_test\cli-commands.crf --depend stm32f7_spi_test\cli-commands.d)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x59EB02E2)
+I (D:\Programs\Keil\ARM\ARMCC\include\stddef.h)(0x55DB71CE)
+I (../Inc/FreeRTOSConfig.h)(0x5A60F8E7)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1/portmacro.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x59EB02E2)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x59EB02E2)
+F (..\CLI\CLI-commands.c)(0x5A64E8EF)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\cli-commands.o --omf_browse stm32f7_spi_test\cli-commands.crf --depend stm32f7_spi_test\cli-commands.d)
 I (../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h)(0x59EB02DF)
 I (../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f767xx.h)(0x59EB02DF)
 I (../Drivers/CMSIS/Include/core_cm7.h)(0x59EB02E0)
@@ -796,7 +811,8 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x59EB02E2)
 I (D:\Programs\Keil\ARM\ARMCC\include\string.h)(0x55DB71C8)
 I (D:\Programs\Keil\ARM\ARMCC\include\stdlib.h)(0x55DB71C8)
 I (..\CLI\FreeRTOS_CLI.h)(0x5A60EB20)
-F (..\CLI\UART-interrupt-driven-command-console.c)(0x5A60FD5C)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\uart-interrupt-driven-command-console.o --omf_browse stm32f7_spi_test\uart-interrupt-driven-command-console.crf --depend stm32f7_spi_test\uart-interrupt-driven-command-console.d)
+I (../Inc/m2_modem.h)(0x5A64E188)
+F (..\CLI\UART-interrupt-driven-command-console.c)(0x5A64EC3B)(-c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I../Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc -I../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1 -I../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Drivers/CMSIS/Include -I..\CLI --C99-I D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE-I D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-D__UVISION_VERSION="517" -D_RTE_ -DSTM32F767xx -DUSE_HAL_DRIVER -DSTM32F767xx-o stm32f7_spi_test\uart-interrupt-driven-command-console.o --omf_browse stm32f7_spi_test\uart-interrupt-driven-command-console.crf --depend stm32f7_spi_test\uart-interrupt-driven-command-console.d)
 I (D:\Programs\Keil\ARM\ARMCC\include\string.h)(0x55DB71C8)
 I (../Drivers/STM32F7xx_HAL_Driver/Inc/stm32F7xx_hal.h)(0x59EB02E1)
 I (../Inc/stm32f7xx_hal_conf.h)(0x5A5F9F55)

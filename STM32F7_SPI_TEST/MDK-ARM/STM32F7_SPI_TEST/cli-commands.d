@@ -44,3 +44,4 @@ stm32f7_spi_test\cli-commands.o: ../Middlewares/Third_Party/FreeRTOS/Source/incl
 stm32f7_spi_test\cli-commands.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\string.h
 stm32f7_spi_test\cli-commands.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 stm32f7_spi_test\cli-commands.o: ..\CLI\FreeRTOS_CLI.h
+stm32f7_spi_test\cli-commands.o: ../Inc/m2_modem.h

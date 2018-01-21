@@ -22,10 +22,34 @@ typedef enum
 	M2_DEVICE_CRC_REG 			=7,	
 } enM2DeviceCS;
 
+typedef enum
+{
+	M2_ECHO_OFF = 0,
+	M2_ECHO_ON,
+}enM2Echo;
 
+typedef struct
+{
+	uint8_t flags;
+	uint16_t m2Word;
+} stM2Word;
+
+typedef union
+{
+	stM2Word word;
+	uint8_t  buf[3];
+} unM2Word;
+
+void 		 M2_Modem_Init(void);
 void 		 M2_Modem_SelectDevice(enM2DeviceCS dev);
 void		 M2_Modem_SendBuf(enM2DeviceCS dev, uint16_t *buf, uint16_t len);
-uint16_t M2_Modem_ReceiveBuf(enM2DeviceCS dev, uint8_t *buf, uint16_t len, uint16_t timeout);
+int8_t 	 M2_Modem_ReceiveBuf(enM2DeviceCS dev, unM2Word *wordBuf, uint16_t len, uint16_t *recv, uint16_t timeout);
+void 		 M2_Modem_RecvAndSendEcho(enM2DeviceCS devRx, enM2DeviceCS devTx);
+int8_t 	 M2_Modem_SendAndRecvEcho(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16_t *sndBuf, uint16_t sndLen, uint16_t *rcvBuf, uint16_t *rcvLen, uint32_t timeout);
+void 		 M2_Modem_EchoState(enM2Echo state);
+
+
+
 uint16_t crc16_CCITT(const uint8_t* data_p, uint8_t length);
 
 #endif

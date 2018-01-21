@@ -135,7 +135,7 @@ void Cmd_UART_Tx(UART_HandleTypeDef *huart,  char *str, uint16_t len)
 void vUARTCommandConsoleStart( void )
 {
 	__HAL_UART_ENABLE_IT(&huart1, UART_IT_RXNE);
-  osThreadDef(UARTCmdTask, prvUARTCommandConsoleTask, osPriorityLow, 0, 512);
+  osThreadDef(UARTCmdTask, prvUARTCommandConsoleTask, osPriorityHigh, 0, 512);
   UARTCmdTaskHandle = osThreadCreate(osThread(UARTCmdTask), NULL);
 	vRegisterCLICommands();
   
@@ -206,7 +206,10 @@ portBASE_TYPE xReturned;
 //		FreeRTOS_read( xConsoleUART, &cRxedChar, sizeof( cRxedChar ) );
             //    HAL_UART_Receive(&huart1, (uint8_t *) &cRxedChar, sizeof( cRxedChar ), 0xFFFFFFFF );
 		
-		while(FIFO_IS_EMPTY( uart1_rx_fifo ));
+		while(FIFO_IS_EMPTY( uart1_rx_fifo ))
+		{
+				vTaskDelay(5);
+		}
 
 				cRxedChar = FIFO_FRONT( uart1_rx_fifo );
 				FIFO_POP( uart1_rx_fifo );
@@ -352,11 +355,10 @@ void vOutputString( const uint8_t * const pucMessage )
 //		}
 //	}
   
-    if(UART_CheckIdleState(&huart1) == HAL_OK)
-    {
-      HAL_UART_Transmit(&huart1, (uint8_t *) pucMessage, strlen( ( char * ) pucMessage ), strlen( ( char * ) pucMessage ) );
 
-    }
+      Cmd_UART_Tx(&huart1, (uint8_t *) pucMessage, strlen( ( char * ) pucMessage ));
+
+
 }
 /*-----------------------------------------------------------*/
 

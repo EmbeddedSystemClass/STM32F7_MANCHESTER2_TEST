@@ -348,6 +348,10 @@ static portBASE_TYPE xParameterNumber = 0;
 	
 static uint16_t m2WordCnt = 0;
 static uint16_t m2WordBuf[100];
+uint8_t 	tempBuf[32];
+int8_t ret;
+uint16_t rcvLen;
+uint16_t cnt;
 
 
 	if( xParameterNumber == 0 )
@@ -408,20 +412,18 @@ static uint16_t m2WordBuf[100];
 			Execute M2_Modem_SendAndRecvEcho
 			*/
 			
-			int8_t ret;
-			uint16_t rcvLen;
+
 			
 			ret = M2_Modem_SendAndRecvEcho(M2_DEVICE_IF_0_TX, M2_DEVICE_IF_0_RX, m2WordBuf, m2WordCnt,  m2WordBuf, &rcvLen, 400);
 			
 			if(ret == 0)
 			{				
-					uint16_t cnt;
-					
 					for(cnt = 0; cnt < rcvLen; cnt++)
 					{
-							sprintf( ( char * ) pcWriteBuffer, "%x ", m2WordBuf[cnt]);
+							sprintf( tempBuf, "%X ", m2WordBuf[cnt]);
+							strncat( ( char * ) pcWriteBuffer, tempBuf, strlen(tempBuf) );
 					}
-					sprintf( ( char * ) pcWriteBuffer, "\r\n");
+					strncat( ( char * ) pcWriteBuffer, "\r\n", strlen( "\r\n" ) );
 			}
 			else
 			{

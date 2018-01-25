@@ -1,8 +1,8 @@
 stm32f7_spi_test\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
-stm32f7_spi_test\heap_4.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+stm32f7_spi_test\heap_4.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 stm32f7_spi_test\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-stm32f7_spi_test\heap_4.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
-stm32f7_spi_test\heap_4.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+stm32f7_spi_test\heap_4.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+stm32f7_spi_test\heap_4.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 stm32f7_spi_test\heap_4.o: ../Inc/FreeRTOSConfig.h
 stm32f7_spi_test\heap_4.o: ../Inc/main.h
 stm32f7_spi_test\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h

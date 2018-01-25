@@ -1,9 +1,9 @@
 stm32f7_spi_test\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
-stm32f7_spi_test\cmsis_os.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\string.h
+stm32f7_spi_test\cmsis_os.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\string.h
 stm32f7_spi_test\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 stm32f7_spi_test\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-stm32f7_spi_test\cmsis_os.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
-stm32f7_spi_test\cmsis_os.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+stm32f7_spi_test\cmsis_os.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+stm32f7_spi_test\cmsis_os.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 stm32f7_spi_test\cmsis_os.o: ../Inc/FreeRTOSConfig.h
 stm32f7_spi_test\cmsis_os.o: ../Inc/main.h
 stm32f7_spi_test\cmsis_os.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h

@@ -28,6 +28,7 @@ typedef enum
 	M2_ECHO_ON,
 }enM2Echo;
 
+#pragma pack(push, 1)
 typedef struct
 {
 	uint8_t flags;
@@ -39,6 +40,7 @@ typedef union
 	stM2Word word;
 	uint8_t  buf[3];
 } unM2Word;
+#pragma pack(pop)
 
 void 		 M2_Modem_Init(void);
 void 		 M2_Modem_SelectDevice(enM2DeviceCS dev);

@@ -21,7 +21,7 @@ static void delay_us(uint32_t time)
 void M2_Modem_Init(void)
 {
   	uint16_t  m2Addr = M2_ADDR;
-		M2_Modem_SendBuf(M2_DEVICE_IF_0_SET_ADDR, &m2Addr, 1);
+//		M2_Modem_SendBuf(M2_DEVICE_IF_0_SET_ADDR, &m2Addr, 1);
 	
 		osThreadDef(M2_Task, M2_Modem_Task, osPriorityNormal, 0, 256);
 		osThreadCreate(osThread(M2_Task), NULL);		
@@ -68,6 +68,7 @@ void		 M2_Modem_SendBuf(enM2DeviceCS dev, uint16_t *buf, uint16_t len)
 	for(bufCnt = 0; bufCnt < (len*2);  bufCnt++)
 	{
 			HAL_SPI_Transmit(&M2_SPI, &(((uint8_t*)buf)[bufCnt]), 1, 10);
+			delay_us(5);
 			STROB_SET;
 			delay_us(5);
 			STROB_RESET;			
@@ -147,13 +148,15 @@ void 		 M2_Modem_FlushRxFIFO(enM2DeviceCS dev)
 #define M2_RECV_TIMEOUT					100
 #define M2_MAX_RECV_MAX_LEN			100
 
-
+unM2Word rcvWordBuf[M2_MAX_RECV_MAX_LEN];
 void 		 M2_Modem_RecvAndSendEcho(enM2DeviceCS devRx, enM2DeviceCS devTx)
 {
-		unM2Word rcvWordBuf[M2_MAX_RECV_MAX_LEN];
+		
 		uint16_t sndBuf[M2_MAX_RECV_MAX_LEN];
 		uint16_t rcvLen;
-		if(M2_Modem_ReceiveBuf(devRx, rcvWordBuf, M2_MAX_RECV_MAX_LEN, &rcvLen, M2_RECV_TIMEOUT) == HAL_OK)
+		int8_t ret;
+		ret = M2_Modem_ReceiveBuf(devRx, rcvWordBuf, M2_MAX_RECV_MAX_LEN, &rcvLen, M2_RECV_TIMEOUT);
+		if((ret == HAL_OK) || (ret == HAL_TIMEOUT))
 		{
 				uint16_t cnt = 0;
 				
@@ -168,7 +171,7 @@ void 		 M2_Modem_RecvAndSendEcho(enM2DeviceCS devRx, enM2DeviceCS devTx)
 
 int8_t 		 M2_Modem_SendAndRecvEcho(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16_t *sndBuf, uint16_t sndLen, uint16_t *rcvBuf, uint16_t *rcvLen, uint32_t timeout)
 {
-		unM2Word rcvWordBuf[32];
+//		unM2Word rcvWordBuf[32];
 		uint16_t rcvWordLen = 0;
 
 		int8_t	 err;
@@ -178,7 +181,7 @@ int8_t 		 M2_Modem_SendAndRecvEcho(enM2DeviceCS devTx, enM2DeviceCS devRx, uint1
 	
 		err = M2_Modem_ReceiveBuf(devRx, rcvWordBuf, sndLen, &rcvWordLen, timeout);
 	
-		if(err == HAL_OK)
+		if((err == HAL_OK) || (err == HAL_TIMEOUT) )
 		{
 				uint16_t cnt = 0;
 				

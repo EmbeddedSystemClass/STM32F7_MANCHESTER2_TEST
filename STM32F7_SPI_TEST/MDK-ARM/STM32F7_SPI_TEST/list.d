@@ -1,8 +1,8 @@
 stm32f7_spi_test\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
-stm32f7_spi_test\list.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+stm32f7_spi_test\list.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 stm32f7_spi_test\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-stm32f7_spi_test\list.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stddef.h
-stm32f7_spi_test\list.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+stm32f7_spi_test\list.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+stm32f7_spi_test\list.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 stm32f7_spi_test\list.o: ../Inc/FreeRTOSConfig.h
 stm32f7_spi_test\list.o: ../Inc/main.h
 stm32f7_spi_test\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h

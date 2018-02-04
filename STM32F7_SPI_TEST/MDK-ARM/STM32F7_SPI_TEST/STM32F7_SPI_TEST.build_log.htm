@@ -3,70 +3,69 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.24.2.0
-Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: noW noW, GEO, LIC=HF8WF-62X2I-WJ96K-ZARRL-VTY53-2R3MP
+IDE-Version: µVision V5.17.0.0
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: noW noW, geo, LIC=NHY9U-SL21I-KTI3H-W80HX-ENB0V-57A1N
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: 5.24.1
-Toolchain Path:  C:\Program Files\Keil\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 5 (build 528)
-Assembler:       Armasm.exe V5.06 update 5 (build 528)
-Linker/Locator:  ArmLink.exe V5.06 update 5 (build 528)
-Library Manager: ArmAr.exe V5.06 update 5 (build 528)
-Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
-CPU DLL:         SARMCM3.DLL V5.24.1
-Dialog DLL:      DCM.DLL V1.16.0.0
-Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
-Dialog DLL:      TCM.DLL V1.32.0.0
+Toolchain:       MDK-ARM Professional  Version: 5.17
+Toolchain Path:  D:\Programs\Keil\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 1 (build 61)
+Assembler:       Armasm.exe V5.06 update 1 (build 61)
+Linker/Locator:  ArmLink.exe V5.06 update 1 (build 61)
+Library Manager: ArmAr.exe V5.06 update 1 (build 61)
+Hex Converter:   FromElf.exe V5.06 update 1 (build 61)
+CPU DLL:         SARMCM3.DLL V5.17
+Dialog DLL:      DCM.DLL V1.13.4.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TCM.DLL V1.14.6.0
  
 <h2>Project:</h2>
-E:\PROJECTS\other\modem\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\STM32F7_SPI_TEST.uvprojx
-Project File Date:  01/24/2018
+D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\STM32F7_SPI_TEST.uvprojx
+Project File Date:  02/01/2018
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Program Files\Keil\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 1 (build 61)', folder: 'D:\Programs\Keil\ARM\ARMCC\Bin'
 Build target 'STM32F7_SPI_TEST'
-compiling m2_modem.c...
-../Inc/m2_modem.h(57): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Src\m2_modem.c(23): warning:  #177-D: variable "m2Addr"  was declared but never referenced
-    	uint16_t  m2Addr = M2_ADDR;
-..\Src\m2_modem.c(38): warning:  #111-D: statement is unreachable
-  			break;
-..\Src\m2_modem.c(44): warning:  #111-D: statement is unreachable
-  			break;
-..\Src\m2_modem.c(50): warning:  #111-D: statement is unreachable
-  			break;			
-..\Src\m2_modem.c(230): warning:  #1-D: last line of file ends without a newline
-  }
-..\Src\m2_modem.c: 6 warnings, 0 errors
+compiling UART-interrupt-driven-command-console.c...
+..\CLI\UART-interrupt-driven-command-console.c(141): warning:  #223-D: function "vRegisterCLICommands" declared implicitly
+  	vRegisterCLICommands();
+..\CLI\UART-interrupt-driven-command-console.c(202): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
+  					Cmd_UART_Tx(&huart3, (uint8_t *) pcWelcomeMessage, strlen( ( char * ) pcWelcomeMessage ));
+..\CLI\UART-interrupt-driven-command-console.c(229): warning:  #167-D: argument of type "int8_t *" is incompatible with parameter of type "char *"
+  								Cmd_UART_Tx(&huart3,  &cRxedChar, 1 );
+..\CLI\UART-interrupt-driven-command-console.c(250): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
+  			 Cmd_UART_Tx(&huart3, (uint8_t *) pcNewLine, strlen( ( char * ) pcNewLine ));
+..\CLI\UART-interrupt-driven-command-console.c(280): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
+  								Cmd_UART_Tx(&huart3, (uint8_t *) pcOutputString, strlen( ( char * ) pcOutputString ));
+..\CLI\UART-interrupt-driven-command-console.c(306): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
+  											Cmd_UART_Tx(&huart3, (uint8_t *) pcEndOfCommandOutputString, strlen( ( char * ) pcEndOfCommandOutputString ));
+..\CLI\UART-interrupt-driven-command-console.c(360): warning:  #167-D: argument of type "uint8_t *" is incompatible with parameter of type "char *"
+        Cmd_UART_Tx(&huart3, (uint8_t *) pucMessage, strlen( ( char * ) pucMessage ));
+..\CLI\UART-interrupt-driven-command-console.c(101): warning:  #177-D: variable "xCommandConsoleTask" was declared but never referenced
+  static xTaskHandle xCommandConsoleTask = NULL;
+..\CLI\UART-interrupt-driven-command-console.c: 8 warnings, 0 errors
 linking...
-Program Size: Code=19040 RO-data=1636 RW-data=216 ZI-data=34264  
-"STM32F7_SPI_TEST\STM32F7_SPI_TEST.axf" - 0 Error(s), 6 Warning(s).
+Program Size: Code=19212 RO-data=1636 RW-data=216 ZI-data=37976  
+"STM32F7_SPI_TEST\STM32F7_SPI_TEST.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.5.0.1.pack
-                ARM.CMSIS.5.0.1
+                http://www.keil.com/pack/ARM.CMSIS.4.5.0.pack
+                ARM::CMSIS:CORE:4.3.0
                 CMSIS (Cortex Microcontroller Software Interface Standard)
-   * Component: CORE Version: 5.0.1
-
-Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32F7xx_DFP.2.9.0.pack
-                Keil.STM32F7xx_DFP.2.9.0
-                STMicroelectronics STM32F7 Series Device Support, Drivers and Examples
+   * Component: CORE Version: 4.3.0
 
 <h2>Collection of Component include folders:</h2>
-  .\RTE\_STM32F7_SPI_TEST
-  C:\Program Files\Keil\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
-  C:\Program Files\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include
+  D:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SPI_TEST\MDK-ARM\RTE
+  D:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
-   * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:07
+   * Component: ARM::CMSIS:CORE:4.3.0
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

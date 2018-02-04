@@ -1,9 +1,9 @@
 stm32f7_spi_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c
-stm32f7_spi_test\tasks.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
-stm32f7_spi_test\tasks.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\string.h
+stm32f7_spi_test\tasks.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+stm32f7_spi_test\tasks.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\string.h
 stm32f7_spi_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-stm32f7_spi_test\tasks.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stddef.h
-stm32f7_spi_test\tasks.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+stm32f7_spi_test\tasks.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+stm32f7_spi_test\tasks.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 stm32f7_spi_test\tasks.o: ../Inc/FreeRTOSConfig.h
 stm32f7_spi_test\tasks.o: ../Inc/main.h
 stm32f7_spi_test\tasks.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h

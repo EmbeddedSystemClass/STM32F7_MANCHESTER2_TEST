@@ -1,5 +1,5 @@
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ..\CLI\UART-interrupt-driven-command-console.c
-stm32f7_spi_test\uart-interrupt-driven-command-console.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\string.h
+stm32f7_spi_test\uart-interrupt-driven-command-console.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\string.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32F7xx_hal.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Inc/stm32f7xx_hal_conf.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Inc/main.h
@@ -8,7 +8,7 @@ stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/STM32F7xx_H
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f7xx.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/stm32f767xx.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/CMSIS/Include/core_cm7.h
-stm32f7_spi_test\uart-interrupt-driven-command-console.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+stm32f7_spi_test\uart-interrupt-driven-command-console.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/CMSIS/Include/core_cmFunc.h
@@ -16,7 +16,7 @@ stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/CMSIS/Inclu
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/CMSIS/Device/ST/STM32F7xx/Include/system_stm32f7xx.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-stm32f7_spi_test\uart-interrupt-driven-command-console.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+stm32f7_spi_test\uart-interrupt-driven-command-console.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc_ex.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_gpio.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_gpio_ex.h
@@ -34,7 +34,7 @@ stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/STM32F7xx_H
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_uart_ex.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-stm32f7_spi_test\uart-interrupt-driven-command-console.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+stm32f7_spi_test\uart-interrupt-driven-command-console.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Inc/FreeRTOSConfig.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
 stm32f7_spi_test\uart-interrupt-driven-command-console.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h

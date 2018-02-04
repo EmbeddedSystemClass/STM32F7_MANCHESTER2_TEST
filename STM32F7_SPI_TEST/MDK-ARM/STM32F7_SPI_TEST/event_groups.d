@@ -1,8 +1,8 @@
 stm32f7_spi_test\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
-stm32f7_spi_test\event_groups.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+stm32f7_spi_test\event_groups.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 stm32f7_spi_test\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-stm32f7_spi_test\event_groups.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stddef.h
-stm32f7_spi_test\event_groups.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+stm32f7_spi_test\event_groups.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+stm32f7_spi_test\event_groups.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 stm32f7_spi_test\event_groups.o: ../Inc/FreeRTOSConfig.h
 stm32f7_spi_test\event_groups.o: ../Inc/main.h
 stm32f7_spi_test\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h

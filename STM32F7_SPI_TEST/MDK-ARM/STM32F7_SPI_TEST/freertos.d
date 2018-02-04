@@ -1,7 +1,7 @@
 stm32f7_spi_test\freertos.o: ../Src/freertos.c
 stm32f7_spi_test\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-stm32f7_spi_test\freertos.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stddef.h
-stm32f7_spi_test\freertos.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+stm32f7_spi_test\freertos.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+stm32f7_spi_test\freertos.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 stm32f7_spi_test\freertos.o: ../Inc/FreeRTOSConfig.h
 stm32f7_spi_test\freertos.o: ../Inc/main.h
 stm32f7_spi_test\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h

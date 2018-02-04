@@ -164,7 +164,7 @@ standard names. */
               to prevent overwriting SysTick_Handler defined within STM32Cube HAL */
 /* #define xPortSysTickHandler SysTick_Handler */
 
-/* USER CODE BEGIN Defines */   	  
+/* USER CODE BEGIN Defines */   	      
 /* Definitions needed when configGENERATE_RUN_TIME_STATS is on */
 //#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS configureTimerForRunTimeStats
 //#define portGET_RUN_TIME_COUNTER_VALUE getRunTimeCounterValue    

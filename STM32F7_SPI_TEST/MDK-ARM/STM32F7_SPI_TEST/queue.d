@@ -1,9 +1,9 @@
 stm32f7_spi_test\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
-stm32f7_spi_test\queue.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
-stm32f7_spi_test\queue.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\string.h
+stm32f7_spi_test\queue.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+stm32f7_spi_test\queue.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\string.h
 stm32f7_spi_test\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
-stm32f7_spi_test\queue.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stddef.h
-stm32f7_spi_test\queue.o: C:\Program Files\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+stm32f7_spi_test\queue.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+stm32f7_spi_test\queue.o: D:\Programs\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 stm32f7_spi_test\queue.o: ../Inc/FreeRTOSConfig.h
 stm32f7_spi_test\queue.o: ../Inc/main.h
 stm32f7_spi_test\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h

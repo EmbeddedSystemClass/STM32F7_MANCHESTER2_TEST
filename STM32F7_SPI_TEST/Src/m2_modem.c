@@ -111,6 +111,7 @@ int8_t M2_Modem_ReceiveBuf(enM2DeviceCS dev, unM2Word *wordBuf, uint16_t len, ui
 		{
 				if(M2_Modem_RxFIFO_NotEmpty(dev))
 				{
+						
 						tickstart = HAL_GetTick();
 						uint8_t byteCnt = 0;
 					

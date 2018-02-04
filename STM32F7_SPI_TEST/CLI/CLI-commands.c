@@ -347,7 +347,7 @@ portBASE_TYPE xParameterStringLength, xReturn;
 static portBASE_TYPE xParameterNumber = 0;
 	
 static uint16_t m2WordCnt = 0;
-static uint16_t m2WordBuf[100];
+static uint16_t m2WordBuf[1000];
 uint8_t 	tempBuf[32];
 int8_t ret;
 uint16_t rcvLen;

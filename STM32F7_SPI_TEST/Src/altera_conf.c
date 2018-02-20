@@ -3,8 +3,8 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-extern const unsigned char altera_conf_image[];
-extern const unsigned long altera_conf_image_length;
+extern const uint8_t altera_conf_image[];
+extern const uint32_t altera_conf_image_length;
 
 extern SPI_HandleTypeDef hspi1;
 
@@ -18,30 +18,33 @@ void AlteraConf_Init(void)
 HAL_StatusTypeDef  AlteraConf_ConfigureFPGA(void)
 {
 		HAL_StatusTypeDef errorcode = HAL_OK;
-		HAL_GPIO_WritePin(nCONFIG_GPIO_Port, nCONFIG_Pin, GPIO_PIN_RESET);
+		ALTCONF_NCONFIG_RESET;
 		vTaskDelay(1);
 		
-		if(HAL_GPIO_ReadPin(nSTATUS_GPIO_Port, nSTATUS_Pin) != GPIO_PIN_RESET)
+		if(ALTCONF_NSTATUS != GPIO_PIN_RESET)
 		{
 				return HAL_ERROR;
 		}
 			
-		HAL_GPIO_WritePin(nCONFIG_GPIO_Port, nCONFIG_Pin, GPIO_PIN_SET);
+		ALTCONF_NCONFIG_SET;
 		
 	/*
 	Ждем готовности к конфигурации
 	Добавить таймаут ошибки
 	*/
-		while(HAL_GPIO_ReadPin(nSTATUS_GPIO_Port, nSTATUS_Pin) == GPIO_PIN_RESET);
+		while(ALTCONF_NSTATUS == GPIO_PIN_RESET);
 		
-		errorcode = HAL_SPI_Transmit(&M2_SPI, (uint8_t *)altera_conf_image, altera_conf_image_length, 10);
+		errorcode = HAL_SPI_Transmit(&M2_SPI, (uint8_t *)altera_conf_image, altera_conf_image_length, 2000);
 		
 		if(errorcode != HAL_OK)
 		{
 				return HAL_ERROR;
 		}
 		
-		
+		if(ALTCONF_CONF_DONE != GPIO_PIN_SET)
+		{
+				return HAL_ERROR;
+		}
 		
 		errorcode = HAL_SPI_Transmit(&M2_SPI, (uint8_t *)altera_conf_image, 1, 10);
 		
@@ -49,4 +52,6 @@ HAL_StatusTypeDef  AlteraConf_ConfigureFPGA(void)
 		{
 				return HAL_ERROR;
 		}
+		
+		vTaskDelay(1);
 }

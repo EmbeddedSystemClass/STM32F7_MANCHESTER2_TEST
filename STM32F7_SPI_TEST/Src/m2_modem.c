@@ -4,7 +4,7 @@
 
 extern SPI_HandleTypeDef hspi1;
 
-#define  M2_SPI	 hspi1
+
 
 static enM2Echo echoState;
 

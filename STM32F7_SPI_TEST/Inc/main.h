@@ -81,6 +81,12 @@
 #define READY_0_GPIO_Port GPIOB
 #define READY_1_Pin GPIO_PIN_2
 #define READY_1_GPIO_Port GPIOB
+#define nCONFIG_Pin GPIO_PIN_13
+#define nCONFIG_GPIO_Port GPIOF
+#define nSTATUS_Pin GPIO_PIN_14
+#define nSTATUS_GPIO_Port GPIOF
+#define CONF_DONE_Pin GPIO_PIN_15
+#define CONF_DONE_GPIO_Port GPIOF
 #define RMII_TXD1_Pin GPIO_PIN_13
 #define RMII_TXD1_GPIO_Port GPIOB
 #define LD3_Pin GPIO_PIN_14

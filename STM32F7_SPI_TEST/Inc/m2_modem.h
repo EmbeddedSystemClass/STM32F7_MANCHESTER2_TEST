@@ -11,6 +11,8 @@
 #define STROB_RESET	  HAL_GPIO_WritePin(STROB_GPIO_Port, STROB_Pin, GPIO_PIN_RESET);
 #define STROB_SET	    HAL_GPIO_WritePin(STROB_GPIO_Port, STROB_Pin, GPIO_PIN_SET);
 
+#define  M2_SPI	 hspi1
+
 typedef enum
 {
 	M2_DEVICE_IF_0_TX 			=1,

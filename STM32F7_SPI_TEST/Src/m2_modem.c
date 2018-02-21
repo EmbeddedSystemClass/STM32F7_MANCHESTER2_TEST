@@ -22,6 +22,13 @@ void M2_Modem_Init(void)
 {
   	uint16_t  m2Addr = M2_ADDR;
 //		M2_Modem_SendBuf(M2_DEVICE_IF_0_SET_ADDR, &m2Addr, 1);
+		
+	hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }	
 	
 		osThreadDef(M2_Task, M2_Modem_Task, osPriorityNormal, 0, 256);
 		osThreadCreate(osThread(M2_Task), NULL);		

@@ -135,10 +135,12 @@ void Cmd_UART_Tx(UART_HandleTypeDef *huart,  char *str, uint16_t len)
 
 void vUARTCommandConsoleStart( void )
 {
-	__HAL_UART_ENABLE_IT(&huart3, UART_IT_RXNE);
+	vRegisterCLICommands();
+
   osThreadDef(UARTCmdTask, prvUARTCommandConsoleTask, osPriorityHigh, 0, 512);
   UARTCmdTaskHandle = osThreadCreate(osThread(UARTCmdTask), NULL);
-	vRegisterCLICommands();
+		__HAL_UART_CLEAR_OREFLAG(&huart3);
+		__HAL_UART_ENABLE_IT(&huart3, UART_IT_RXNE);
   
 //	xTaskCreate( 	prvUARTCommandConsoleTask,				/* The task that implements the command console. */
 //					( const int8_t * const ) "UARTCmd",		/* Text name assigned to the task.  This is just to assist debugging.  The kernel does not use this name itself. */

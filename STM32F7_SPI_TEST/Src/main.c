@@ -142,8 +142,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-//	vUARTCommandConsoleStart();
-//	M2_Modem_Init();
+
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -243,7 +242,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_LSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -471,7 +470,10 @@ void StartDefaultTask(void const * argument)
 //	realCRC16=crc16_CCITT((uint8_t*)snd_data, TEST_SEND_DATA_LEN*2);
 	
   /* Infinite loop */
+	AlteraConf_Init();
 	AlteraConf_ConfigureFPGA();
+	vUARTCommandConsoleStart();
+	M2_Modem_Init();
   for(;;)
   {
 //			M2_Modem_SendBuf(M2_DEVICE_IF_0_TX, snd_data, TEST_SEND_DATA_LEN);

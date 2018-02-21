@@ -13,11 +13,20 @@ void AlteraConf_Init(void)
 	/*
 		Настройка SPI 8 бит , CPHA = 0, CPOL = 0
 	*/
+
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_LSB;
+
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }	
 }
 
 HAL_StatusTypeDef  AlteraConf_ConfigureFPGA(void)
 {
 		HAL_StatusTypeDef errorcode = HAL_OK;
+		uint32_t altera_conf_image_cnt = altera_conf_image_length;
+		uint8_t *altera_conf_image_ptr =(uint8_t*) altera_conf_image;
 		ALTCONF_NCONFIG_RESET;
 		vTaskDelay(1);
 		
@@ -34,11 +43,28 @@ HAL_StatusTypeDef  AlteraConf_ConfigureFPGA(void)
 	*/
 		while(ALTCONF_NSTATUS == GPIO_PIN_RESET);
 		
-		errorcode = HAL_SPI_Transmit(&M2_SPI, (uint8_t *)altera_conf_image, altera_conf_image_length, 2000);
+		/*
+			Передача пакета по HAL_SPI_Transmit ограничена 65536, по этому передаем частями
+		*/
 		
-		if(errorcode != HAL_OK)
+		while(altera_conf_image_cnt)
 		{
-				return HAL_ERROR;
+			if(altera_conf_image_cnt > 0xFFFF)
+			{
+					errorcode = HAL_SPI_Transmit(&M2_SPI, altera_conf_image_ptr, 0xFFFF, 2000);
+					altera_conf_image_cnt -= 0xFFFF;
+					altera_conf_image_ptr += 0xFFFF;
+			}
+			else
+			{
+					errorcode = HAL_SPI_Transmit(&M2_SPI, altera_conf_image_ptr, altera_conf_image_cnt, 2000);
+					altera_conf_image_cnt = 0x0;	
+			}
+			
+			if(errorcode != HAL_OK)
+			{
+					return HAL_ERROR;
+			}
 		}
 		
 		if(ALTCONF_CONF_DONE != GPIO_PIN_SET)

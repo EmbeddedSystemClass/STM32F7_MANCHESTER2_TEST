@@ -10,6 +10,8 @@
 #define ALTCONF_NSTATUS				HAL_GPIO_ReadPin(nSTATUS_GPIO_Port, nSTATUS_Pin)
 #define ALTCONF_CONF_DONE		HAL_GPIO_ReadPin(CONF_DONE_GPIO_Port, CONF_DONE_Pin)
 
+#define ALTCONF_NSTATUS_TIMEOUT		10//ms
+
 
 
 void AlteraConf_Init(void);

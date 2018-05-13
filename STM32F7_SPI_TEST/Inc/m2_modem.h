@@ -21,7 +21,8 @@ typedef enum
 	M2_DEVICE_IF_1_RX 			=4,
 	M2_DEVICE_IF_0_SET_ADDR =5,
 	M2_DEVICE_IF_1_SET_ADDR =6,	
-	M2_DEVICE_CRC_REG 			=7,	
+	M2_DEVICE_CRC_REG 			=7,
+	M2_DEVICE_SET_REG 			=8,		
 } enM2DeviceCS;
 
 typedef enum

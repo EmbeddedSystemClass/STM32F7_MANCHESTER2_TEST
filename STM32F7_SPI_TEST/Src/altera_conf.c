@@ -6,7 +6,7 @@
 extern const uint8_t altera_conf_image[];
 extern const uint32_t altera_conf_image_length;
 
-extern SPI_HandleTypeDef hspi1;
+extern SPI_HandleTypeDef M2_SPI;
 
 void AlteraConf_Init(void)
 {
@@ -14,9 +14,9 @@ void AlteraConf_Init(void)
 		Настройка SPI 8 бит , CPHA = 0, CPOL = 0
 	*/
 
-  hspi1.Init.FirstBit = SPI_FIRSTBIT_LSB;
+  M2_SPI.Init.FirstBit = SPI_FIRSTBIT_LSB;
 
-  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  if (HAL_SPI_Init(&M2_SPI) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }	
@@ -25,6 +25,7 @@ void AlteraConf_Init(void)
 HAL_StatusTypeDef  AlteraConf_ConfigureFPGA(void)
 {
 		HAL_StatusTypeDef errorcode = HAL_OK;
+		uint32_t tickstart = 0U;
 		uint32_t altera_conf_image_cnt = altera_conf_image_length;
 		uint8_t *altera_conf_image_ptr =(uint8_t*) altera_conf_image;
 		ALTCONF_NCONFIG_RESET;
@@ -41,7 +42,15 @@ HAL_StatusTypeDef  AlteraConf_ConfigureFPGA(void)
 	Ждем готовности к конфигурации
 	Добавить таймаут ошибки
 	*/
-		while(ALTCONF_NSTATUS == GPIO_PIN_RESET);
+		tickstart = HAL_GetTick();
+		
+		while(ALTCONF_NSTATUS == GPIO_PIN_RESET)
+		{
+				if ((HAL_GetTick() - tickstart) >=  ALTCONF_NSTATUS_TIMEOUT)
+				{
+						return HAL_TIMEOUT;
+				}				
+		}
 		
 		/*
 			Передача пакета по HAL_SPI_Transmit ограничена 65536, по этому передаем частями
@@ -80,4 +89,6 @@ HAL_StatusTypeDef  AlteraConf_ConfigureFPGA(void)
 		}
 		
 		vTaskDelay(1);
+		
+		return HAL_OK;
 }

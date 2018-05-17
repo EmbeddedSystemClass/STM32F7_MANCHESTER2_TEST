@@ -49,7 +49,6 @@
 
 void SysTick_Handler(void);
 void USART1_IRQHandler(void);
-void USART3_IRQHandler(void);
 
 #ifdef __cplusplus
 }

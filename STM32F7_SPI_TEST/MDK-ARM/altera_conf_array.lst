@@ -47447,18 +47447,17 @@ conf_image
    15 0001F884                 END
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.dp --apcs=
 interwork --depend=stm32f7_spi_test\altera_conf_array.d -ostm32f7_spi_test\alte
-ra_conf_array.o -I..\Inc -ID:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\STM32F7_SP
+ra_conf_array.o -I..\Inc -I..\\Inc -ID:\PROJECTS\CubeMX_tests\STM32F7_SPI_TEST\
 
 
 
 ARM Macro Assembler    Page 731 
 
 
-I_TEST\MDK-ARM\RTE -ID:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -I
-D:\Programs\Keil\ARM\PACK\Keil\STM32F7xx_DFP\2.8.0\Drivers\CMSIS\Device\ST\STM3
-2F7xx\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SE
-TA 517" --predefine="_RTE_ SETA 1" --predefine="STM32F767xx SETA 1" --list=alte
-ra_conf_array.lst ..\Src\altera_conf_array.s
+STM32F7_SPI_TEST\MDK-ARM\RTE -ID:\Programs\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\
+Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 517
+" --predefine="_RTE_ SETA 1" --list=altera_conf_array.lst ..\Src\altera_conf_ar
+ray.s
 
 
 
@@ -47499,4 +47498,4 @@ Symbol: altera_conf_section
       None
 Comment: altera_conf_section unused
 4 symbols
-338 symbols in table
+337 symbols in table

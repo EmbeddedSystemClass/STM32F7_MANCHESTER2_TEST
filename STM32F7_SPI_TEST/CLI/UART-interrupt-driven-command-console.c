@@ -56,7 +56,7 @@
 
 #include "stm32F7xx_hal.h"
 
-extern UART_HandleTypeDef huart3;
+extern UART_HandleTypeDef CONSOLE_UART;
 #include "cmsis_os.h"
 
 /* FreeRTOS includes. */
@@ -75,6 +75,7 @@ extern UART_HandleTypeDef huart3;
 
 /* Dimensions the buffer into which input characters are placed. */
 #define cmdMAX_INPUT_SIZE			1000
+#define CONSOLE_UART		huart1
 
 /* Place holder for calls to ioctl that don't use the value parameter. */
 #define cmdPARAMTER_NOT_USED		( ( void * ) 0 )
@@ -89,7 +90,7 @@ extern UART_HandleTypeDef huart3;
 #define UART_FIFO_SIZE	256
 FIFO(UART_FIFO_SIZE) uart_rx_fifo;
 
-extern UART_HandleTypeDef huart3;
+extern UART_HandleTypeDef CONSOLE_UART;
 /*
  * The task that implements the command console processing.
  */
@@ -128,7 +129,7 @@ void Cmd_UART_Tx(UART_HandleTypeDef *huart,  char *str, uint16_t len)
 		for(cnt = 0; cnt < len; cnt++)
 		{
 				huart->Instance->TDR = str[cnt];	
-				while(!(__HAL_UART_GET_FLAG(&huart3, UART_FLAG_TC)));
+				while(!(__HAL_UART_GET_FLAG(&CONSOLE_UART, UART_FLAG_TC)));
 		}
 
 }
@@ -139,8 +140,8 @@ void vUARTCommandConsoleStart( void )
 
   osThreadDef(UARTCmdTask, prvUARTCommandConsoleTask, osPriorityHigh, 0, 512);
   UARTCmdTaskHandle = osThreadCreate(osThread(UARTCmdTask), NULL);
-		__HAL_UART_CLEAR_OREFLAG(&huart3);
-		__HAL_UART_ENABLE_IT(&huart3, UART_IT_RXNE);
+		__HAL_UART_CLEAR_OREFLAG(&CONSOLE_UART);
+		__HAL_UART_ENABLE_IT(&CONSOLE_UART, UART_IT_RXNE);
   
 //	xTaskCreate( 	prvUARTCommandConsoleTask,				/* The task that implements the command console. */
 //					( const int8_t * const ) "UARTCmd",		/* Text name assigned to the task.  This is just to assist debugging.  The kernel does not use this name itself. */
@@ -196,18 +197,18 @@ portBASE_TYPE xReturned;
 //	{
 //		FreeRTOS_write( xConsoleUART, pcWelcomeMessage, strlen( ( char * ) pcWelcomeMessage ) );
 //	}
-//        if(UART_CheckIdleState(&huart3) == HAL_OK)
+//        if(UART_CheckIdleState(&CONSOLE_UART) == HAL_OK)
 //        {
-//          HAL_UART_Transmit(&huart3, (uint8_t *) pcWelcomeMessage, strlen( ( char * ) pcWelcomeMessage ) ,strlen( ( char * ) pcWelcomeMessage ) );
+//          HAL_UART_Transmit(&CONSOLE_UART, (uint8_t *) pcWelcomeMessage, strlen( ( char * ) pcWelcomeMessage ) ,strlen( ( char * ) pcWelcomeMessage ) );
 
 //        }
-					Cmd_UART_Tx(&huart3, (uint8_t *) pcWelcomeMessage, strlen( ( char * ) pcWelcomeMessage ));
+					Cmd_UART_Tx(&CONSOLE_UART, (uint8_t *) pcWelcomeMessage, strlen( ( char * ) pcWelcomeMessage ));
         
 	for( ;; )
 	{
 		/* Only interested in reading one character at a time. */
 //		FreeRTOS_read( xConsoleUART, &cRxedChar, sizeof( cRxedChar ) );
-            //    HAL_UART_Receive(&huart3, (uint8_t *) &cRxedChar, sizeof( cRxedChar ), 0xFFFFFFFF );
+            //    HAL_UART_Receive(&CONSOLE_UART, (uint8_t *) &cRxedChar, sizeof( cRxedChar ), 0xFFFFFFFF );
 		
 		while(FIFO_IS_EMPTY( uart_rx_fifo ))
 		{
@@ -223,12 +224,12 @@ portBASE_TYPE xReturned;
 //		{
 //			FreeRTOS_write( xConsoleUART, &cRxedChar, sizeof( cRxedChar ) );
 //		}
-//                if(UART_CheckIdleState(&huart3) == HAL_OK)
+//                if(UART_CheckIdleState(&CONSOLE_UART) == HAL_OK)
 //                {
-//                  HAL_UART_Transmit(&huart3, (uint8_t *) &cRxedChar, sizeof( cRxedChar ), sizeof( cRxedChar ) );
+//                  HAL_UART_Transmit(&CONSOLE_UART, (uint8_t *) &cRxedChar, sizeof( cRxedChar ), sizeof( cRxedChar ) );
 //                }
 								
-								Cmd_UART_Tx(&huart3,  &cRxedChar, 1 );
+								Cmd_UART_Tx(&CONSOLE_UART,  &cRxedChar, 1 );
                 
 		if( cRxedChar == '\r' )
 		{
@@ -243,13 +244,13 @@ portBASE_TYPE xReturned;
 //				easier to read. */
 //				FreeRTOS_write( xConsoleUART, pcNewLine, strlen( ( char * ) pcNewLine ) );
 //			}
-//                      if(UART_CheckIdleState(&huart3) == HAL_OK)
+//                      if(UART_CheckIdleState(&CONSOLE_UART) == HAL_OK)
 //                      {
-//                        HAL_UART_Transmit(&huart3, (uint8_t *) pcNewLine, strlen( ( char * ) pcNewLine ), strlen( ( char * ) pcNewLine ) );
+//                        HAL_UART_Transmit(&CONSOLE_UART, (uint8_t *) pcNewLine, strlen( ( char * ) pcNewLine ), strlen( ( char * ) pcNewLine ) );
 
 //                      }
 			
-			 Cmd_UART_Tx(&huart3, (uint8_t *) pcNewLine, strlen( ( char * ) pcNewLine ));
+			 Cmd_UART_Tx(&CONSOLE_UART, (uint8_t *) pcNewLine, strlen( ( char * ) pcNewLine ));
 			/* See if the command is empty, indicating that the last command is
 			to be executed again. */
 			if( cInputIndex == 0 )
@@ -267,7 +268,7 @@ portBASE_TYPE xReturned;
 				in the Blocked state while the Tx completes, if it has not
 				already done so, so no CPU time	is wasted polling. */
 //				xReturned = FreeRTOS_ioctl( xConsoleUART, ioctlOBTAIN_WRITE_MUTEX, cmd50ms );
-          //                      if(UART_CheckIdleState(&huart3) == HAL_OK)
+          //                      if(UART_CheckIdleState(&CONSOLE_UART) == HAL_OK)
                                   xReturned = pdPASS;
                                 
 				if( xReturned == pdPASS )
@@ -278,8 +279,8 @@ portBASE_TYPE xReturned;
 
 					/* Write the generated string to the UART. */
 //					FreeRTOS_write( xConsoleUART, pcOutputString, strlen( ( char * ) pcOutputString ) );
-           //                             HAL_UART_Transmit(&huart3, (uint8_t *) pcOutputString, strlen( ( char * ) pcOutputString ), strlen( ( char * ) pcOutputString ) );
-								Cmd_UART_Tx(&huart3, (uint8_t *) pcOutputString, strlen( ( char * ) pcOutputString ));
+           //                             HAL_UART_Transmit(&CONSOLE_UART, (uint8_t *) pcOutputString, strlen( ( char * ) pcOutputString ), strlen( ( char * ) pcOutputString ) );
+								Cmd_UART_Tx(&CONSOLE_UART, (uint8_t *) pcOutputString, strlen( ( char * ) pcOutputString ));
 				}
 
 			} while( xReturned != pdFALSE );
@@ -299,13 +300,13 @@ portBASE_TYPE xReturned;
 //				easier to read. */
 //				FreeRTOS_write( xConsoleUART, pcEndOfCommandOutputString, strlen( ( char * ) pcEndOfCommandOutputString ) );
 //			}
-//                      if(UART_CheckIdleState(&huart3) == HAL_OK)
+//                      if(UART_CheckIdleState(&CONSOLE_UART) == HAL_OK)
 //                      {
-//                        HAL_UART_Transmit(&huart3, (uint8_t *) pcEndOfCommandOutputString, strlen( ( char * ) pcEndOfCommandOutputString ), strlen( ( char * ) pcEndOfCommandOutputString ) );
+//                        HAL_UART_Transmit(&CONSOLE_UART, (uint8_t *) pcEndOfCommandOutputString, strlen( ( char * ) pcEndOfCommandOutputString ), strlen( ( char * ) pcEndOfCommandOutputString ) );
 
 //                      }
 											
-											Cmd_UART_Tx(&huart3, (uint8_t *) pcEndOfCommandOutputString, strlen( ( char * ) pcEndOfCommandOutputString ));
+											Cmd_UART_Tx(&CONSOLE_UART, (uint8_t *) pcEndOfCommandOutputString, strlen( ( char * ) pcEndOfCommandOutputString ));
 		}
 		else
 		{
@@ -359,7 +360,7 @@ void vOutputString( const uint8_t * const pucMessage )
 //	}
   
 
-      Cmd_UART_Tx(&huart3, (uint8_t *) pucMessage, strlen( ( char * ) pucMessage ));
+      Cmd_UART_Tx(&CONSOLE_UART, (uint8_t *) pucMessage, strlen( ( char * ) pucMessage ));
 
 
 }

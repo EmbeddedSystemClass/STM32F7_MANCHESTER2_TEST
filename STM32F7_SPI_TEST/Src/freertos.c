@@ -52,7 +52,9 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN Includes */     
-
+#include "m2_modem.h"
+#include "UART-interrupt-driven-command-console.h"
+#include "altera_conf.h"
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -111,6 +113,11 @@ void StartDefaultTask(void const * argument)
 {
 
   /* USER CODE BEGIN StartDefaultTask */
+	vTaskDelay(100);
+	AlteraConf_Init();
+	AlteraConf_ConfigureFPGA();
+	vUARTCommandConsoleStart();
+	M2_Modem_Init();
   /* Infinite loop */
   for(;;)
   {

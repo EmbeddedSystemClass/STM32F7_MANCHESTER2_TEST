@@ -52,7 +52,7 @@ int8_t 	 M2_Modem_ReceiveBuf(enM2DeviceCS dev, unM2Word *wordBuf, uint16_t len, 
 void 		 M2_Modem_RecvAndSendEcho(enM2DeviceCS devRx, enM2DeviceCS devTx);
 int8_t 	 M2_Modem_SendAndRecvEcho(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16_t *sndBuf, uint16_t sndLen, uint16_t *rcvBuf, uint16_t *rcvLen, uint32_t timeout);
 void 		 M2_Modem_EchoState(enM2Echo state);
-
+void		 M2_Modem_SetControlReg(uint8_t reg);
 
 
 uint16_t crc16_CCITT(const uint8_t* data_p, uint8_t length);

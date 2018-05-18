@@ -29,9 +29,15 @@ void M2_Modem_Init(void)
   {
     _Error_Handler(__FILE__, __LINE__);
   }	
+			
+	uint8_t setReg = 0;
+
+		M2_Modem_SetControlReg(0x1);
 	
-		osThreadDef(M2_Task, M2_Modem_Task, osPriorityNormal, 0, 256);
-		osThreadCreate(osThread(M2_Task), NULL);		
+	osThreadDef(M2_Task, M2_Modem_Task, osPriorityNormal, 0, 256);
+		osThreadCreate(osThread(M2_Task), NULL);	
+	
+
 }
 
 uint8_t M2_Modem_RxFIFO_NotEmpty(enM2DeviceCS dev)
@@ -151,6 +157,20 @@ void 		 M2_Modem_FlushRxFIFO(enM2DeviceCS dev)
 {
 		M2_Modem_SelectDevice(dev);
 		LOAD_RESET;
+}
+
+void		 M2_Modem_SetControlReg(uint8_t reg)
+{
+	uint8_t regTemp = reg;
+	M2_Modem_SelectDevice(M2_DEVICE_SET_REG);
+	
+	HAL_SPI_Transmit(&M2_SPI, &regTemp, 1, 10);
+	delay_us(5);
+	STROB_SET;
+	delay_us(5);
+	STROB_RESET;			
+
+	LOAD_RESET;
 }
 
 #define M2_RECV_TIMEOUT					100

@@ -90,5 +90,7 @@ HAL_StatusTypeDef  AlteraConf_ConfigureFPGA(void)
 		
 		vTaskDelay(1);
 		
+		HAL_GPIO_WritePin(FPGA_RST_GPIO_Port, FPGA_RST_Pin, GPIO_PIN_SET);
+		
 		return HAL_OK;
 }

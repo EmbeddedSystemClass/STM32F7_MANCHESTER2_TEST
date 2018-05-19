@@ -414,7 +414,7 @@ uint16_t cnt;
 			
 
 			
-			ret = M2_Modem_SendAndRecvEcho(M2_DEVICE_IF_0_TX, M2_DEVICE_IF_0_RX, m2WordBuf, m2WordCnt,  m2WordBuf, &rcvLen, 400);
+			ret = M2_Modem_SendAndRecvEcho(M2_IF_TX, M2_IF_RX, m2WordBuf, m2WordCnt,  m2WordBuf, &rcvLen, 400);
 			
 			if(ret == 0)
 			{				

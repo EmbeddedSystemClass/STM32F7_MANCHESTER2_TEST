@@ -2,6 +2,8 @@
 #include "cmsis_os.h"
 
 
+
+
 extern SPI_HandleTypeDef hspi1;
 
 
@@ -32,12 +34,10 @@ void M2_Modem_Init(void)
 			
 	uint8_t setReg = 0;
 
-		M2_Modem_SetControlReg(0x1);
+	M2_Modem_SetControlReg(0x1);
 	
 	osThreadDef(M2_Task, M2_Modem_Task, osPriorityNormal, 0, 256);
-		osThreadCreate(osThread(M2_Task), NULL);	
-	
-
+	osThreadCreate(osThread(M2_Task), NULL);	
 }
 
 uint8_t M2_Modem_RxFIFO_NotEmpty(enM2DeviceCS dev)
@@ -236,9 +236,9 @@ void M2_Modem_Task(void const * argument)
 {
 	while(1)
 	{
-		 if((echoState == M2_ECHO_ON) && M2_Modem_RxFIFO_NotEmpty(M2_DEVICE_IF_0_RX))
+		 if((echoState == M2_ECHO_ON) && M2_Modem_RxFIFO_NotEmpty(M2_IF_RX))
 		 {
-				M2_Modem_RecvAndSendEcho(M2_DEVICE_IF_0_RX, M2_DEVICE_IF_0_TX);
+				M2_Modem_RecvAndSendEcho(M2_IF_RX, M2_IF_TX);
 		 }
 	}
 }

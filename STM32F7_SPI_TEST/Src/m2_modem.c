@@ -173,6 +173,22 @@ void		 M2_Modem_SetControlReg(uint8_t reg)
 	LOAD_RESET;
 }
 
+uint8_t		 M2_Modem_GetInputPins(void)
+{
+	uint8_t regTemp = 0;
+	M2_Modem_SelectDevice(M2_DEVICE_INPUT_PINS);
+	delay_us(5);
+	STROB_SET;
+	delay_us(5);
+	STROB_RESET;
+	
+	HAL_SPI_Receive(&M2_SPI, &regTemp, 1, 10);
+
+			
+	LOAD_RESET;
+	return regTemp;
+}
+
 #define M2_RECV_TIMEOUT					100
 #define M2_MAX_RECV_MAX_LEN			100
 
@@ -232,6 +248,7 @@ void 		 M2_Modem_EchoState(enM2Echo state)
 		echoState = state;
 }
 
+uint8_t pinState = 0;
 void M2_Modem_Task(void const * argument)
 {
 	while(1)
@@ -240,6 +257,9 @@ void M2_Modem_Task(void const * argument)
 		 {
 				M2_Modem_RecvAndSendEcho(M2_IF_RX, M2_IF_TX);
 		 }
+		
+//		pinState = M2_Modem_GetInputPins();
+//		vTaskDelay(100);
 	}
 }
 

@@ -55,6 +55,7 @@
 #include "m2_modem.h"
 #include "UART-interrupt-driven-command-console.h"
 #include "altera_conf.h"
+#include "adis_accel.h"
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -109,19 +110,23 @@ void MX_FREERTOS_Init(void) {
 }
 
 /* StartDefaultTask function */
+uint16_t accelResult = 0;
 void StartDefaultTask(void const * argument)
 {
 
   /* USER CODE BEGIN StartDefaultTask */
-	vTaskDelay(100);
-	AlteraConf_Init();
-	AlteraConf_ConfigureFPGA();
-	vUARTCommandConsoleStart();
-	M2_Modem_Init();
+//	vTaskDelay(100);
+//	AlteraConf_Init();
+//	AlteraConf_ConfigureFPGA();
+//	vUARTCommandConsoleStart();
+//	M2_Modem_Init();
+	ADIS_Accel_Init();
+	ADIS_Accel_SetTestMode(1);
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+		accelResult = ADIS_Accel_Read(ADIS_AXIS_Y);
+    osDelay(100);
   }
   /* USER CODE END StartDefaultTask */
 }

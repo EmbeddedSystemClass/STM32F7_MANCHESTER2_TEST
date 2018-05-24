@@ -34,7 +34,7 @@ void M2_Modem_Init(void)
 			
 	uint8_t setReg = 0;
 
-	M2_Modem_SetControlReg(0x0);
+	M2_Modem_SetControlReg(0x36);
 	
 	osThreadDef(M2_Task, M2_Modem_Task, osPriorityNormal, 0, 256);
 	osThreadCreate(osThread(M2_Task), NULL);	

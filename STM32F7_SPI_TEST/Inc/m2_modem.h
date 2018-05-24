@@ -2,10 +2,10 @@
 #define M2_MODEM_H
 #include "stm32f7xx_hal.h"
 
-//#define M2_IF_RX 	M2_DEVICE_IF_1_RX//M2_DEVICE_IF_0_RX
-//#define M2_IF_TX	M2_DEVICE_IF_1_TX//M2_DEVICE_IF_0_TX
-#define M2_IF_RX 	M2_DEVICE_IF_0_RX
-#define M2_IF_TX	M2_DEVICE_IF_0_TX
+#define M2_IF_RX 	M2_DEVICE_IF_1_RX//M2_DEVICE_IF_0_RX
+#define M2_IF_TX	M2_DEVICE_IF_1_TX//M2_DEVICE_IF_0_TX
+//#define M2_IF_RX 	M2_DEVICE_IF_0_RX
+//#define M2_IF_TX	M2_DEVICE_IF_0_TX
 
 #define READY_IF0			HAL_GPIO_ReadPin(READY_0_GPIO_Port, READY_0_Pin);
 #define READY_IF1			HAL_GPIO_ReadPin(READY_1_GPIO_Port, READY_1_Pin);

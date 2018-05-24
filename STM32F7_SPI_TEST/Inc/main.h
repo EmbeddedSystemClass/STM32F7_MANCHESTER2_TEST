@@ -77,6 +77,12 @@
 #define READY_1_GPIO_Port GPIOB
 #define FPGA_RST_Pin GPIO_PIN_11
 #define FPGA_RST_GPIO_Port GPIOE
+#define ADIS_CS_Pin GPIO_PIN_10
+#define ADIS_CS_GPIO_Port GPIOB
+#define ADIS_ST_Pin GPIO_PIN_11
+#define ADIS_ST_GPIO_Port GPIOB
+#define ADIS_TCS_Pin GPIO_PIN_12
+#define ADIS_TCS_GPIO_Port GPIOB
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14

@@ -110,22 +110,22 @@ void MX_FREERTOS_Init(void) {
 }
 
 /* StartDefaultTask function */
-uint16_t accelResult = 0;
+int16_t accelResult = 0;
 void StartDefaultTask(void const * argument)
 {
 
   /* USER CODE BEGIN StartDefaultTask */
-//	vTaskDelay(100);
-//	AlteraConf_Init();
-//	AlteraConf_ConfigureFPGA();
-//	vUARTCommandConsoleStart();
-//	M2_Modem_Init();
-	ADIS_Accel_Init();
-	ADIS_Accel_SetTestMode(1);
+	vTaskDelay(100);
+	AlteraConf_Init();
+	AlteraConf_ConfigureFPGA();
+	vUARTCommandConsoleStart();
+	M2_Modem_Init();
+//	ADIS_Accel_Init();
+//	ADIS_Accel_SetTestMode(0);
   /* Infinite loop */
   for(;;)
   {
-		accelResult = ADIS_Accel_Read(ADIS_AXIS_Y);
+//		accelResult = (int16_t)ADIS_Accel_Read(ADIS_AXIS_X);
     osDelay(100);
   }
   /* USER CODE END StartDefaultTask */

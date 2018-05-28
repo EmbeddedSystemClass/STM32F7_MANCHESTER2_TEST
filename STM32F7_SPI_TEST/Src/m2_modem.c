@@ -10,6 +10,9 @@ extern SPI_HandleTypeDef hspi1;
 
 static enM2Echo echoState;
 
+enM2DeviceCS rxIface = M2_DEVICE_IF_0_RX;
+enM2DeviceCS txIface = M2_DEVICE_IF_0_TX;
+
 static void delay_us(uint32_t time);
 uint8_t M2_Modem_RxFIFO_NotEmpty(enM2DeviceCS dev);
 void M2_Modem_Task(void const * argument);
@@ -248,14 +251,29 @@ void 		 M2_Modem_EchoState(enM2Echo state)
 		echoState = state;
 }
 
+void 		 M2_Modem_SetInterface(enM2Interface iface)
+{
+		if(iface == M2_IF_0)
+		{
+			rxIface = M2_DEVICE_IF_0_RX;
+			txIface = M2_DEVICE_IF_0_TX;
+		}
+		else
+		{
+			rxIface = M2_DEVICE_IF_1_RX;
+			txIface = M2_DEVICE_IF_1_TX;
+				
+		}
+}
+
 uint8_t pinState = 0;
 void M2_Modem_Task(void const * argument)
 {
 	while(1)
 	{
-		 if((echoState == M2_ECHO_ON) && M2_Modem_RxFIFO_NotEmpty(M2_IF_RX))
+		 if((echoState == M2_ECHO_ON) && M2_Modem_RxFIFO_NotEmpty(rxIface))
 		 {
-				M2_Modem_RecvAndSendEcho(M2_IF_RX, M2_IF_TX);
+				M2_Modem_RecvAndSendEcho(rxIface, txIface);
 		 }
 		
 //		pinState = M2_Modem_GetInputPins();

@@ -33,6 +33,12 @@ typedef enum
 
 typedef enum
 {
+		M2_IF_0 = 0,
+		M2_IF_1 = 1,
+} enM2Interface;
+
+typedef enum
+{
 	M2_ECHO_OFF = 0,
 	M2_ECHO_ON,
 }enM2Echo;
@@ -60,7 +66,7 @@ int8_t 	 M2_Modem_SendAndRecvEcho(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16
 void 		 M2_Modem_EchoState(enM2Echo state);
 void		 M2_Modem_SetControlReg(uint8_t reg);
 uint8_t	 M2_Modem_GetInputPins(void);
-
+void 		 M2_Modem_SetInterface(enM2Interface iface);
 
 uint16_t crc16_CCITT(const uint8_t* data_p, uint8_t length);
 

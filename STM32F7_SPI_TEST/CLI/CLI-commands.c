@@ -66,7 +66,8 @@
 
 #include "m2_modem.h"
 
-
+extern enM2DeviceCS rxIface;
+extern enM2DeviceCS txIface;
 
 /*
  * Implements the echo-three-parameters command.
@@ -81,6 +82,8 @@ static portBASE_TYPE prvMultiParameterEchoCommand( int8_t *pcWriteBuffer, size_t
 static portBASE_TYPE prvM2SendWord( int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString );
 static portBASE_TYPE prvM2SendEcho( int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString );
 static portBASE_TYPE prvM2EchoMode( int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString );
+static portBASE_TYPE prvM2Interface( int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString );
+static portBASE_TYPE prvM2ControlReg( int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString );
 
 
 
@@ -122,6 +125,22 @@ static const CLI_Command_Definition_t prvM2EchoModeDefinition =
 	1 /* Three parameters are expected, which can take any value. */
 };
 
+static const CLI_Command_Definition_t prvM2InterfaceDefinition =
+{
+	( const int8_t * const ) "m2-interface",
+	( const int8_t * const ) "m2-interface <0/1>:\r\n Expects 1 parameter\r\n\r\n",
+	prvM2Interface, /* The function to run. */
+	1 /* Three parameters are expected, which can take any value. */
+};
+
+static const CLI_Command_Definition_t prvM2ControlRegDefinition =
+{
+	( const int8_t * const ) "m2-set-control-reg",
+	( const int8_t * const ) "m2-set-control-reg <byte>:\r\n Expects 1 parameter\r\n\r\n",
+	prvM2ControlReg, /* The function to run. */
+	1 /* Three parameters are expected, which can take any value. */
+};
+
 
 static const CLI_Command_Definition_t prvM2SendEchoDefinition =
 {
@@ -142,6 +161,8 @@ void vRegisterCLICommands( void )
 	FreeRTOS_CLIRegisterCommand( &prvM2SendWordDefinition );
 	FreeRTOS_CLIRegisterCommand( &prvM2SendEchoDefinition );
 	FreeRTOS_CLIRegisterCommand( &prvM2EchoModeDefinition );
+	FreeRTOS_CLIRegisterCommand( &prvM2InterfaceDefinition );
+	FreeRTOS_CLIRegisterCommand( &prvM2ControlRegDefinition );
 
 }
 
@@ -414,7 +435,7 @@ uint16_t cnt;
 			
 
 			
-			ret = M2_Modem_SendAndRecvEcho(M2_IF_TX, M2_IF_RX, m2WordBuf, m2WordCnt,  m2WordBuf, &rcvLen, 400);
+			ret = M2_Modem_SendAndRecvEcho(txIface, rxIface, m2WordBuf, m2WordCnt,  m2WordBuf, &rcvLen, 400);
 			
 			if(ret == 0)
 			{				
@@ -484,3 +505,109 @@ static portBASE_TYPE xParameterNumber = 0;
 	return xReturn;
 }
 
+static portBASE_TYPE prvM2Interface( int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString )
+{
+int8_t *pcParameterString;
+portBASE_TYPE xParameterStringLength, xReturn;
+static portBASE_TYPE xParameterNumber = 0;
+
+
+	if( xParameterNumber == 0 )
+	{
+		memset( pcWriteBuffer, 0x00, xWriteBufferLen );
+		xParameterNumber = 1L;
+		xReturn = pdPASS;
+	}
+	else
+	{
+		/* Obtain the parameter string. */
+		pcParameterString = ( int8_t * ) FreeRTOS_CLIGetParameter
+									(
+										pcCommandString,		/* The command string itself. */
+										xParameterNumber,		/* Return the next parameter. */
+										&xParameterStringLength	/* Store the parameter string length. */
+									);
+
+		memset( pcWriteBuffer, 0x00, xWriteBufferLen );
+		
+		if(strcmp(pcParameterString, "0") == 0)
+		{
+				M2_Modem_SetInterface(M2_IF_0);
+				sprintf( ( char * ) pcWriteBuffer, "IF 0\r\n");
+		}
+		else if(strcmp(pcParameterString, "1") == 0)
+		{
+				M2_Modem_SetInterface(M2_IF_1);
+				sprintf( ( char * ) pcWriteBuffer, "IF 1\r\n");
+		}
+		else
+		{
+				sprintf( ( char * ) pcWriteBuffer, "Param error\r\n");
+		}
+
+
+		xReturn = pdFALSE;
+		xParameterNumber = 0L;
+	}
+
+	return xReturn;
+}
+
+
+static portBASE_TYPE prvM2ControlReg( int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString )
+{
+int8_t *pcParameterString;
+portBASE_TYPE xParameterStringLength, xReturn;
+static portBASE_TYPE xParameterNumber = 0;
+
+
+	if( xParameterNumber == 0 )
+	{
+		memset( pcWriteBuffer, 0x00, xWriteBufferLen );
+		xParameterNumber = 1L;
+		xReturn = pdPASS;
+	}
+	else
+	{
+		/* Obtain the parameter string. */
+		pcParameterString = ( int8_t * ) FreeRTOS_CLIGetParameter
+									(
+										pcCommandString,		/* The command string itself. */
+										xParameterNumber,		/* Return the next parameter. */
+										&xParameterStringLength	/* Store the parameter string length. */
+									);
+
+		memset( pcWriteBuffer, 0x00, xWriteBufferLen );
+		
+		if( pcParameterString != NULL )
+		{
+			
+			int cnv;
+			uint8_t byteTmp;
+			cnv = sscanf(pcParameterString,"%x",&byteTmp); 
+			
+			if((xParameterStringLength == 2) && (cnv == 1))
+			{				
+					/* There might be more parameters to return after this one. */
+					M2_Modem_SetControlReg(byteTmp);
+					sprintf( ( char * ) pcWriteBuffer, "Control reg =  %x\r\n", byteTmp);
+					xReturn = pdTRUE;
+
+			}
+			else
+			{
+				 sprintf( ( char * ) pcWriteBuffer, "Param error\r\n");
+				 xReturn = pdFALSE;
+				 pcParameterString = NULL;
+				 xParameterNumber = 0;
+			}
+		}
+
+
+
+		xReturn = pdFALSE;
+		xParameterNumber = 0L;
+	}
+
+	return xReturn;
+}

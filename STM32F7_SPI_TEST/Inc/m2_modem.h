@@ -63,6 +63,7 @@ void		 M2_Modem_SendBuf(enM2DeviceCS dev, uint16_t *buf, uint16_t len);
 int8_t 	 M2_Modem_ReceiveBuf(enM2DeviceCS dev, unM2Word *wordBuf, uint16_t len, uint16_t *recv, uint16_t timeout);
 void 		 M2_Modem_RecvAndSendEcho(enM2DeviceCS devRx, enM2DeviceCS devTx);
 int8_t 	 M2_Modem_SendAndRecvEcho(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16_t *sndBuf, uint16_t sndLen, uint16_t *rcvBuf, uint16_t *rcvLen, uint32_t timeout);
+int8_t 	 M2_Modem_SendAndRecvEchoCRC(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16_t *sndBuf, uint16_t sndLen, uint16_t *sndCRC, uint16_t *rcvBuf, uint16_t *rcvLen, uint32_t timeout);
 void 		 M2_Modem_EchoState(enM2Echo state);
 void		 M2_Modem_SetControlReg(uint8_t reg);
 uint8_t	 M2_Modem_GetInputPins(void);

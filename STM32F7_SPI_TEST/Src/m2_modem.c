@@ -246,6 +246,40 @@ int8_t 		 M2_Modem_SendAndRecvEcho(enM2DeviceCS devTx, enM2DeviceCS devRx, uint1
 		}
 }
 
+int8_t 		 M2_Modem_SendAndRecvEchoCRC(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16_t *sndBuf, uint16_t sndLen, uint16_t *sndCRC, uint16_t *rcvBuf, uint16_t *rcvLen, uint32_t timeout)
+{
+//		unM2Word rcvWordBuf[32];
+		uint16_t rcvWordLen = 0;
+
+		int8_t	 err;
+	
+	
+		M2_Modem_SetControlReg(0x3F);//111111
+		M2_Modem_FlushRxFIFO(devRx);
+	
+		*sndCRC = crc16_CCITT((uint8_t*)sndBuf, (uint8_t)sndLen*2); 
+		M2_Modem_SendBuf(devTx, sndBuf, sndLen);
+	
+		err = M2_Modem_ReceiveBuf(devRx, rcvWordBuf, (sndLen + 1), &rcvWordLen, timeout);
+	
+		if((err == HAL_OK) || (err == HAL_TIMEOUT) )
+		{
+				uint16_t cnt = 0;
+				
+				*rcvLen = rcvWordLen;
+				for(cnt = 0; cnt < rcvWordLen; cnt++)
+				{
+						rcvBuf[cnt] = rcvWordBuf[cnt].word.m2Word;
+				}
+				
+				return 0;
+		}
+		else
+		{
+				return -1;
+		}
+}
+
 void 		 M2_Modem_EchoState(enM2Echo state)
 {
 		echoState = state;

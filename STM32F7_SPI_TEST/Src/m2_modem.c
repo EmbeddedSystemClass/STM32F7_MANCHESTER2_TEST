@@ -38,7 +38,7 @@ void M2_Modem_Init(void)
 	uint8_t setReg = 0;
 
 	//M2_Modem_SetControlReg(0x36);
-	M2_Modem_SetControlReg(0xCC);
+//	M2_Modem_SetControlReg(0xCC);
 	
 	osThreadDef(M2_Task, M2_Modem_Task, osPriorityNormal, 0, 256);
 	osThreadCreate(osThread(M2_Task), NULL);	
@@ -193,8 +193,8 @@ uint8_t		 M2_Modem_GetInputPins(void)
 	return regTemp;
 }
 
-#define M2_RECV_TIMEOUT					100
-#define M2_MAX_RECV_MAX_LEN			100
+#define M2_RECV_TIMEOUT					500
+#define M2_MAX_RECV_MAX_LEN			512
 
 unM2Word rcvWordBuf[M2_MAX_RECV_MAX_LEN];
 void 		 M2_Modem_RecvAndSendEcho(enM2DeviceCS devRx, enM2DeviceCS devTx)
@@ -224,7 +224,7 @@ int8_t 		 M2_Modem_SendAndRecvEcho(enM2DeviceCS devTx, enM2DeviceCS devRx, uint1
 
 		int8_t	 err;
 	
-		M2_Modem_FlushRxFIFO(devRx);
+//		M2_Modem_FlushRxFIFO(devRx);
 		M2_Modem_SendBuf(devTx, sndBuf, sndLen);
 	
 		err = M2_Modem_ReceiveBuf(devRx, rcvWordBuf, sndLen, &rcvWordLen, timeout);
@@ -301,18 +301,110 @@ void 		 M2_Modem_SetInterface(enM2Interface iface)
 		}
 }
 
+#define TEST_BUF_SIZE 512
+#define TEST_SEND_SIZE 192
+
 uint8_t pinState = 0;
+uint16_t testSndBufIF0[TEST_BUF_SIZE] = {0};
+unM2Word testRcvBufIF0[TEST_BUF_SIZE] = {0};
+uint16_t recvLenIF0 = 0;
+
+uint16_t testSndBufIF1[TEST_BUF_SIZE] = {0};
+unM2Word testRcvBufIF1[TEST_BUF_SIZE] = {0};
+uint16_t recvLenIF1 = 0;
+
+
+int8_t 		 M2_Modem_EchoTest(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16_t *sndBuf, uint16_t sndLen, unM2Word *rcvBuf, uint16_t *rcvLen, uint32_t timeout)
+{
+		uint16_t rcvWordLen = 0;
+
+		int8_t	 err;
+		uint16_t cnt = 0;
+	
+		for(cnt = 0; cnt < sndLen; cnt++)
+		{
+				rcvBuf[cnt].word.m2Word = 0;
+		}	
+	
+//		M2_Modem_FlushRxFIFO(devRx);
+		M2_Modem_SendBuf(devTx, sndBuf, sndLen);
+	
+		err = M2_Modem_ReceiveBuf(devRx, rcvBuf, sndLen, &rcvWordLen, timeout);
+		
+		if(sndLen != rcvWordLen)
+		{
+				return 4;
+		}
+	
+		if(err == HAL_OK)
+		{
+				
+				
+				*rcvLen = rcvWordLen;
+				for(cnt = 0; cnt < sndLen; cnt++)
+				{
+						if(sndBuf[cnt] != rcvBuf[cnt].word.m2Word)
+						{
+								return 3;
+						}
+				}
+				
+				return 0;
+		}
+		else if(err == HAL_TIMEOUT)
+		{
+				*rcvLen = rcvWordLen;
+				return 2;
+		}
+		else
+		{
+				return 1;
+		}
+}
+
+int8_t echoErr = 0;
+
+uint32_t testCycles = 0;
 void M2_Modem_Task(void const * argument)
 {
+	uint16_t i = 0;
+	for(i = 0; i < TEST_BUF_SIZE; i++)
+	{
+		 testSndBufIF0[i] = i;	
+		 testSndBufIF1[i] = i;	
+	}
+	
 	while(1)
 	{
-		 if((echoState == M2_ECHO_ON) && M2_Modem_RxFIFO_NotEmpty(rxIface))
-		 {
-				M2_Modem_RecvAndSendEcho(rxIface, txIface);
-		 }
+//		 if((echoState == M2_ECHO_ON) && M2_Modem_RxFIFO_NotEmpty(rxIface))
+//		 {
+//				M2_Modem_RecvAndSendEcho(rxIface, txIface);
+//		 }
+			
+//			M2_Modem_SendBuf(M2_DEVICE_IF_0_TX, testSndBufIF0, TEST_SEND_SIZE);
+//			recvLenIF0 = 0;
+//			M2_Modem_ReceiveBuf(M2_DEVICE_IF_0_RX, testRcvBufIF0, M2_MAX_RECV_MAX_LEN, &recvLenIF0, M2_RECV_TIMEOUT);
+//		
+//	
+//			vTaskDelay(1000);
+//		
+//			M2_Modem_SendBuf(M2_DEVICE_IF_1_TX, testSndBufIF1, TEST_SEND_SIZE);
+//			recvLenIF1 = 0;
+//			M2_Modem_ReceiveBuf(M2_DEVICE_IF_1_RX, testRcvBufIF1, M2_MAX_RECV_MAX_LEN, &recvLenIF1, M2_RECV_TIMEOUT);
+		echoErr = M2_Modem_EchoTest(M2_DEVICE_IF_0_TX, M2_DEVICE_IF_0_RX, testSndBufIF0, TEST_SEND_SIZE, testRcvBufIF0, &recvLenIF0, M2_RECV_TIMEOUT);
+		if(echoErr != 0)
+		{
+				vTaskDelay(100);		
+		}
 		
-//		pinState = M2_Modem_GetInputPins();
-//		vTaskDelay(100);
+		echoErr = M2_Modem_EchoTest(M2_DEVICE_IF_1_TX, M2_DEVICE_IF_1_RX, testSndBufIF1, TEST_SEND_SIZE, testRcvBufIF1, &recvLenIF1, M2_RECV_TIMEOUT);
+		if(echoErr != 0)
+		{
+				vTaskDelay(100);		
+		}		
+
+			testCycles++;
+			vTaskDelay(10);		
 	}
 }
 

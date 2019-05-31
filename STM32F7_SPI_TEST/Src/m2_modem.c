@@ -177,6 +177,37 @@ void		 M2_Modem_SetControlReg(uint8_t reg)
 	LOAD_RESET;
 }
 
+void		 M2_Modem_GetControlReg(uint8_t *reg)
+{
+
+	M2_Modem_SelectDevice(M2_DEVICE_GET_REG);
+	delay_us(5);
+	STROB_SET;
+	delay_us(5);
+	STROB_RESET;	
+	HAL_SPI_Receive(&M2_SPI, reg, 1, 10);
+	LOAD_RESET;
+}
+
+void		 M2_Modem_GetIDReg(uint16_t *reg)
+{
+	uint8_t buf[2];
+	M2_Modem_SelectDevice(M2_DEVICE_GET_ID_REG);
+	delay_us(5);
+	STROB_SET;
+	delay_us(5);
+	STROB_RESET;	
+	HAL_SPI_Receive(&M2_SPI, &buf[0], 1, 10);
+	delay_us(5);
+	STROB_SET;
+	delay_us(5);
+	STROB_RESET;	
+	HAL_SPI_Receive(&M2_SPI, &buf[1], 1, 10);	
+	
+	*reg = (uint16_t)buf[0]<<8 | buf[1];	
+	LOAD_RESET;
+}
+
 uint8_t		 M2_Modem_GetInputPins(void)
 {
 	uint8_t regTemp = 0;
@@ -302,7 +333,7 @@ void 		 M2_Modem_SetInterface(enM2Interface iface)
 }
 
 #define TEST_BUF_SIZE 512
-#define TEST_SEND_SIZE 192
+#define TEST_SEND_SIZE 8//253
 
 uint8_t pinState = 0;
 uint16_t testSndBufIF0[TEST_BUF_SIZE] = {0};
@@ -365,6 +396,7 @@ int8_t 		 M2_Modem_EchoTest(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16_t *sn
 int8_t echoErr = 0;
 
 uint32_t testCycles = 0;
+uint16_t idReg = 0;
 void M2_Modem_Task(void const * argument)
 {
 	uint16_t i = 0;
@@ -391,6 +423,9 @@ void M2_Modem_Task(void const * argument)
 //			M2_Modem_SendBuf(M2_DEVICE_IF_1_TX, testSndBufIF1, TEST_SEND_SIZE);
 //			recvLenIF1 = 0;
 //			M2_Modem_ReceiveBuf(M2_DEVICE_IF_1_RX, testRcvBufIF1, M2_MAX_RECV_MAX_LEN, &recvLenIF1, M2_RECV_TIMEOUT);
+		
+		M2_Modem_GetIDReg(&idReg);
+		
 		echoErr = M2_Modem_EchoTest(M2_DEVICE_IF_0_TX, M2_DEVICE_IF_0_RX, testSndBufIF0, TEST_SEND_SIZE, testRcvBufIF0, &recvLenIF0, M2_RECV_TIMEOUT);
 		if(echoErr != 0)
 		{

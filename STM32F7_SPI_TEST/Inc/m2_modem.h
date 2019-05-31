@@ -28,6 +28,8 @@ typedef enum
 	M2_DEVICE_IF_1_SET_ADDR =6,	
 	M2_DEVICE_CRC_REG 			=7,
 	M2_DEVICE_SET_REG 			=8,
+	M2_DEVICE_GET_REG 			=0xD,
+	M2_DEVICE_GET_ID_REG 		=0xA,
 	M2_DEVICE_INPUT_PINS		=9,	
 } enM2DeviceCS;
 
@@ -66,6 +68,8 @@ int8_t 	 M2_Modem_SendAndRecvEcho(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16
 int8_t 	 M2_Modem_SendAndRecvEchoCRC(enM2DeviceCS devTx, enM2DeviceCS devRx, uint16_t *sndBuf, uint16_t sndLen, uint16_t *sndCRC, uint16_t *rcvBuf, uint16_t *rcvLen, uint32_t timeout);
 void 		 M2_Modem_EchoState(enM2Echo state);
 void		 M2_Modem_SetControlReg(uint8_t reg);
+void		 M2_Modem_GetControlReg(uint8_t *reg);
+void		 M2_Modem_GetIDReg(uint16_t *reg);
 uint8_t	 M2_Modem_GetInputPins(void);
 void 		 M2_Modem_SetInterface(enM2Interface iface);
 

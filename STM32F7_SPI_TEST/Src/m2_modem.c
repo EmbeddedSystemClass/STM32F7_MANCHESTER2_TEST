@@ -40,8 +40,8 @@ void M2_Modem_Init(void)
 	//M2_Modem_SetControlReg(0x36);
 //	M2_Modem_SetControlReg(0xCC);
 	
-	osThreadDef(M2_Task, M2_Modem_Task, osPriorityNormal, 0, 256);
-	osThreadCreate(osThread(M2_Task), NULL);	
+//	osThreadDef(M2_Task, M2_Modem_Task, osPriorityNormal, 0, 256);
+//	osThreadCreate(osThread(M2_Task), NULL);	
 }
 
 uint8_t M2_Modem_RxFIFO_NotEmpty(enM2DeviceCS dev)
